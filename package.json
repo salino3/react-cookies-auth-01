@@ -1,15 +1,18 @@
 {
+  "homepage": "https://salino3.github.io/react-cookies-auth-01",
   "name": "react-cookies-auth-01",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port 7000",
-    "build": "tsc -b && vite build",
+    "build": "tsc && vite build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sass": "^1.83.0"
