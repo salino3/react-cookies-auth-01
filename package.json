@@ -5,7 +5,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 7000",
+    "dev": "vite cross-env VITE_APP_BASE=develop --port 7000",
+    "start": "vite cross-env VITE_APP_BASE=production --port 7000",
     "build": "tsc && vite build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
@@ -23,6 +24,7 @@
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.17.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
