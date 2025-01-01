@@ -4,8 +4,8 @@ import "./home.styles.scss";
 
 export const HomeLayout: React.FC = () => {
   return (
-    <main className="rootHomeLayout">
+    <div className="rootHomeLayout">
       <Home />
-    </main>
+    </div>
   );
 };
