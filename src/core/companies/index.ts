@@ -1,3 +1,3 @@
 export * from "./interfaces";
-// export * from "./provider-users-app";
+export * from "./provider-companies";
 export * from "./global-companies-context";

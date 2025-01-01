@@ -8,10 +8,14 @@ export interface Company {
 }
 
 export interface StateCompanies {
-  data: Company;
+  companies: Company[];
 }
 
 export interface GlobalStateCompanies {
-  state: StateCompanies;
-  // actions: Actions;
+  companiesState: StateCompanies;
+  setUsersState: React.Dispatch<React.SetStateAction<StateCompanies>>;
 }
+
+export const initialStateCompanies: StateCompanies = {
+  companies: [],
+};
