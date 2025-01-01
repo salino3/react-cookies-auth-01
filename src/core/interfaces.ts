@@ -1,3 +1,12 @@
+interface UPDATE_THEME {
+  type: "UPDATE_THEME";
+  payload: "light" | "dark";
+}
+
+export type All_Actions = UPDATE_THEME;
+
+//----------------------------------------------------------------
+
 export interface WorkRelationships {
   id: number;
   user_id: number;
@@ -8,10 +17,16 @@ export interface WorkRelationships {
 
 export interface StateApp {
   theme: "light" | "dark";
-  workRelationships: WorkRelationships;
+  workRelationships: WorkRelationships[];
 }
 
 export interface GlobalStateApp {
   state: StateApp;
-  // actions: Actions;
+  dispatch: React.Dispatch<All_Actions>;
+  toggleTheme: () => void;
 }
+
+export const initialState: StateApp = {
+  theme: "light",
+  workRelationships: [],
+};
