@@ -8,10 +8,14 @@ export interface User {
 }
 
 export interface StateUsers {
-  data: User;
+  users: User[];
 }
 
 export interface GlobalStateUsers {
-  state: StateUsers;
-  // actions: Actions;
+  usersState: StateUsers;
+  setUsersState: React.Dispatch<React.SetStateAction<StateUsers>>;
 }
+
+export const initialStateUsers: StateUsers = {
+  users: [],
+};

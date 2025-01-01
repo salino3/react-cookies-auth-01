@@ -5,14 +5,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite cross-env VITE_APP_BASE=develop --port 7000",
-    "start": "vite cross-env VITE_APP_BASE=production --port 7000",
+    "dev": "cross-env VITE_APP_BASE=develop vite  --port 7000",
+    "start": "cross-env VITE_APP_BASE=production vite  --port 7000",
     "build": "tsc && vite build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
