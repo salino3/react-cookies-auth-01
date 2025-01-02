@@ -1,10 +1,24 @@
 export interface User {
-  id: number;
+  id?: number;
   name: string;
   email: string;
-  surname: string;
+  surname?: string;
   password: string | null;
   age: number;
+}
+
+export interface UserRegisterForm {
+  name: string;
+  email: string;
+  surname?: string;
+  password: string;
+  passwordConfirm: string;
+  age: number;
+}
+
+export interface UserLoginForm {
+  email: string;
+  password: string;
 }
 
 export interface StateUsers {

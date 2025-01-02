@@ -8,7 +8,7 @@ export type All_Actions = UPDATE_THEME;
 //----------------------------------------------------------------
 
 export interface WorkRelationships {
-  id: number;
+  id?: number;
   user_id: number;
   company_id: number;
   role: string;
