@@ -7,6 +7,20 @@ export interface User {
   age: number;
 }
 
+export interface UserRegisterForm {
+  name: string;
+  email: string;
+  surname?: string;
+  password: string;
+  passwordConfirm: string;
+  age: number;
+}
+
+export interface UserLoginForm {
+  email: string;
+  password: string;
+}
+
 export interface StateUsers {
   users: User[];
 }
