@@ -30,5 +30,15 @@ export const useAppFunctions = () => {
       return "";
     }
   };
-  return { getWordPrefix, getEndTokenFromCookie, getAuthToken };
+
+  function capitalizeFirst(text: string) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  return {
+    getWordPrefix,
+    getEndTokenFromCookie,
+    getAuthToken,
+    capitalizeFirst,
+  };
 };
