@@ -9,9 +9,9 @@ export const PublicRoutes: React.FC = () => {
 
   const token = getAuthToken();
 
-  if (token) {
-    navigate(routesApp.dashboard);
-  }
+  //   if (token) {
+  //     navigate(routesApp.dashboard);
+  //   }
 
   return <Outlet />;
 };
