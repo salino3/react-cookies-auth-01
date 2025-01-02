@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppFunctions } from "../../hooks";
-import "./box-input.styles.scss";
 import { User } from "../../core";
+import "./box-input.styles.scss";
 
 interface Props {
   name: string;
@@ -9,7 +9,7 @@ interface Props {
   type: string;
   rq?: boolean;
   value?: User[keyof User];
-  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const BoxInput: React.FC<Props> = (props) => {
