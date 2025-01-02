@@ -17,12 +17,12 @@ const routes: PropsRoutes[] = [
     visibility: "public",
   },
   {
-    path: routesApp?.users, // Ruta relativa al padre
+    path: routesApp?.users,
     element: <h1>Users</h1>,
     visibility: "private",
   },
   {
-    path: routesApp?.dashboard, // Ruta relativa o absoluta según el contexto
+    path: routesApp?.dashboard,
     element: <h1>Dashboard</h1>,
     visibility: "private",
   },
@@ -42,7 +42,11 @@ export const AppRoutes: React.FC = () => {
             <Route path={path} element={element} />
           </Route>
         ) : visibility === "private" ? (
-          <Route key={path} path={routesApp?.root} element={<PrivateRoutes />}>
+          <Route
+            key={path}
+            path={routesApp?.private}
+            element={<PrivateRoutes />}
+          >
             <Route path={path} element={element} />
           </Route>
         ) : (

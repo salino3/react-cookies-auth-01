@@ -8,10 +8,12 @@ export const PrivateRoutes: React.FC = () => {
 
   const { getAuthToken } = useAppFunctions();
 
-  const token = getAuthToken();
+  React.useEffect(() => {
+    const token = getAuthToken();
+    if (!token) {
+      navigate(routesApp.root);
+    }
+  }, [getAuthToken]);
 
-  // if (!token) {
-  //   navigate(routesApp.root);
-  // }
   return <Outlet />;
 };

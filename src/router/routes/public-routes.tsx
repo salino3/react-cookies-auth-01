@@ -7,11 +7,12 @@ export const PublicRoutes: React.FC = () => {
   const navigate = useNavigate();
   const { getAuthToken } = useAppFunctions();
 
-  const token = getAuthToken();
-
-  //   if (token) {
-  //     navigate(routesApp.dashboard);
-  //   }
+  React.useEffect(() => {
+    const token = getAuthToken();
+    if (token) {
+      navigate(routesApp.dashboard);
+    }
+  }, [getAuthToken]);
 
   return <Outlet />;
 };
