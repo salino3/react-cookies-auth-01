@@ -7,19 +7,22 @@ interface Props {
   name: string;
   pl?: string;
   type: string;
+  txt: string;
   rq?: boolean;
   value?: User[keyof User];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const BoxInput: React.FC<Props> = (props) => {
-  const { name, pl, type, rq = false, value, onChange } = props;
+  const { name, pl, type, txt, rq = false, value, onChange } = props;
 
   const { capitalizeFirst } = useAppFunctions();
 
   return (
     <div className={`boxInput_90 boxInput_${name}`}>
-      <label htmlFor="name">{capitalizeFirst(name)}</label>
+      <label htmlFor={name}>{`${capitalizeFirst(txt)}${
+        rq ? "" : " (optional)"
+      }`}</label>
       <input
         value={value ?? ""}
         onChange={onChange}

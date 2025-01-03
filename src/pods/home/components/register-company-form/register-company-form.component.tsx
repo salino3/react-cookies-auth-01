@@ -1,24 +1,21 @@
 import React, { useState } from "react";
+import { CompanyRegisterForm, ServicesApp } from "../../../../core";
 import { BoxInput } from "../../../../common-app";
-import { ServicesApp, UserRegisterForm } from "../../../../core";
-import "./form-register.styles.scss";
+import "./register-company-form.styles.scss";
 
-export const FormRegister: React.FC = () => {
-  const [formData, setFormData] = useState<UserRegisterForm>({
+export const CompanyFormRegister: React.FC = () => {
+  const [formData, setFormData] = useState<CompanyRegisterForm>({
     name: "",
-    surname: "",
     email: "",
+    industry: "",
     password: "",
     passwordConfirm: "",
-    age: 0,
+    head_quarters: "",
   });
 
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    if (formData?.age < 18) {
-      alert("You must be 18 years old or older to register");
-      return;
-    }
+
     if (formData?.password && formData?.password?.length < 6) {
       alert("Password must be at least 6 characters");
       return;
@@ -27,20 +24,29 @@ export const FormRegister: React.FC = () => {
       alert("Passwords do not match");
       return;
     }
-    ServicesApp?.loginUser(formData);
-    console.log("Form submitted", formData);
+    ServicesApp?.registerCompany(formData).then(() => {
+      setFormData({
+        name: "",
+        email: "",
+        industry: "",
+        password: "",
+        passwordConfirm: "",
+        head_quarters: "",
+      });
+      alert("Company registered successfully");
+    });
   };
 
   const handleChange =
-    (key: keyof UserRegisterForm) =>
+    (key: keyof CompanyRegisterForm) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("Form changed", key, formData);
       setFormData({ ...formData, [key]: event.target.value });
     };
 
   return (
-    <form id="RegisterForm" onSubmit={hanldeSubmit}>
+    <form id="CompanyRegisterForm" onSubmit={hanldeSubmit}>
       <BoxInput
+        txt="Name"
         value={formData?.name || ""}
         onChange={handleChange("name")}
         name="name"
@@ -49,14 +55,8 @@ export const FormRegister: React.FC = () => {
         rq
       />
       <BoxInput
-        value={formData?.surname || ""}
-        onChange={handleChange("surname")}
-        name="surname"
-        pl="Surname"
-        type="text"
-      />
-      <BoxInput
-        value={formData?.email || ""}
+        txt="Email"
+        value={formData?.email.toLowerCase().trim() || ""}
         onChange={handleChange("email")}
         name="email"
         pl="Email"
@@ -64,7 +64,18 @@ export const FormRegister: React.FC = () => {
         rq
       />
       <BoxInput
-        value={formData?.password || ""}
+        txt="Industry"
+        value={formData?.industry || ""}
+        onChange={handleChange("industry")}
+        name="industry"
+        pl="Industry"
+        type="text"
+        rq
+      />
+
+      <BoxInput
+        txt="Password"
+        value={formData?.password.trim() || ""}
         onChange={handleChange("password")}
         name="password"
         pl="Password"
@@ -72,6 +83,7 @@ export const FormRegister: React.FC = () => {
         rq
       />
       <BoxInput
+        txt="Confirm password"
         value={formData?.passwordConfirm || ""}
         onChange={handleChange("passwordConfirm")}
         name="passwordConfirm"
@@ -80,12 +92,12 @@ export const FormRegister: React.FC = () => {
         rq
       />
       <BoxInput
-        value={formData?.age || ""}
-        onChange={handleChange("age")}
-        name="age"
-        pl="Age"
-        type="number"
-        rq
+        txt="Head quarter"
+        value={formData?.head_quarters || ""}
+        onChange={handleChange("head_quarters")}
+        name="head_quarters"
+        pl="Head quarter"
+        type="text"
       />
       <button type="submit">Click</button>
     </form>

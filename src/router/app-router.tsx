@@ -22,6 +22,11 @@ const routes: PropsRoutes[] = [
     visibility: "private",
   },
   {
+    path: routesApp?.companies,
+    element: <h1>Companies</h1>,
+    visibility: "private",
+  },
+  {
     path: routesApp?.dashboard,
     element: <h1>Dashboard</h1>,
     visibility: "private",
@@ -30,6 +35,11 @@ const routes: PropsRoutes[] = [
     path: routesApp?.error404,
     element: <h1>Error: 404</h1>,
     visibility: "public",
+  },
+  {
+    path: routesApp?.errorPrivate404,
+    element: <h1>Error Private: 404</h1>,
+    visibility: "private",
   },
 ];
 

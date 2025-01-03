@@ -1,5 +1,10 @@
 import React from "react";
-import { FormLogin } from "./components";
+import {
+  CompanyFormRegister,
+  FormLoginCompany,
+  FormLoginUser,
+  UserFormRegister,
+} from "./components";
 import "./home.styles.scss";
 
 export const Home: React.FC = () => {
@@ -7,7 +12,23 @@ export const Home: React.FC = () => {
     <div className="rootHomePage">
       <h1>Home Page</h1>
       <p>Welcome to the Home Page</p>
-      <FormLogin />
+      <details>
+        <summary>Register User</summary>
+        <UserFormRegister />
+      </details>
+      <details>
+        <summary>Register Company</summary>
+        <CompanyFormRegister />
+      </details>
+      <hr />
+      <details>
+        <summary>Login Users</summary>
+        <FormLoginUser />
+      </details>
+      <details>
+        <summary>Login Companies</summary>
+        <FormLoginCompany />
+      </details>
     </div>
   );
 };

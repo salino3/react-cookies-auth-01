@@ -4,5 +4,25 @@
   min-height: 100%;
   justify-content: flex-start;
   align-items: center;
-  border: solid;
+
+  details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1024px;
+    padding: 1rem;
+    summary {
+      cursor: pointer;
+      width: fit-content;
+    }
+  }
+
+  hr {
+    width: 100%;
+    max-width: 1024px;
+    border: 1px solid var(--color-eight);
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+  }
 }

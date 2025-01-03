@@ -4,7 +4,7 @@ export interface User {
   email: string;
   surname?: string;
   password: string | null;
-  age: number;
+  age: number | null;
 }
 
 export interface UserRegisterForm {
@@ -13,7 +13,7 @@ export interface UserRegisterForm {
   surname?: string;
   password: string;
   passwordConfirm: string;
-  age: number;
+  age: number | null;
 }
 
 export interface UserLoginForm {

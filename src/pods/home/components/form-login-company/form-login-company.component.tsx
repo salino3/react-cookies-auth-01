@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BoxInput } from "../../../../common-app";
-import { ServicesApp, UserLoginForm } from "../../../../core";
-import "./form-login.styles.scss";
+import { ServicesApp, CompanyLoginForm } from "../../../../core";
 import { routesApp } from "../../../../router";
+import "./form-login-company.styles.scss";
 
-export const FormLogin: React.FC = () => {
+export const FormLoginCompany: React.FC = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState<UserLoginForm>({
+  const [formData, setFormData] = useState<CompanyLoginForm>({
     email: "",
     password: "",
   });
@@ -15,22 +15,21 @@ export const FormLogin: React.FC = () => {
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    ServicesApp?.loginUser(formData).then(() => {
-      navigate(routesApp?.users);
+    ServicesApp?.loginCompany(formData).then(() => {
+      navigate(routesApp?.companies);
     });
-    console.log("Form submitted", formData);
   };
 
   const handleChange =
-    (key: keyof UserLoginForm) =>
+    (key: keyof CompanyLoginForm) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("Form changed", key, formData);
       setFormData({ ...formData, [key]: event.target.value });
     };
 
   return (
     <form id="LoginForm" onSubmit={hanldeSubmit}>
       <BoxInput
+        txt="Email"
         value={formData?.email || ""}
         onChange={handleChange("email")}
         name="email"
@@ -39,6 +38,7 @@ export const FormLogin: React.FC = () => {
         rq
       />
       <BoxInput
+        txt="Password"
         value={formData?.password || ""}
         onChange={handleChange("password")}
         name="password"
