@@ -29,6 +29,7 @@ export const FormLoginCompany: React.FC = () => {
   return (
     <form id="LoginForm" onSubmit={hanldeSubmit}>
       <BoxInput
+        txt="Email"
         value={formData?.email || ""}
         onChange={handleChange("email")}
         name="email"
@@ -37,6 +38,7 @@ export const FormLoginCompany: React.FC = () => {
         rq
       />
       <BoxInput
+        txt="Password"
         value={formData?.password || ""}
         onChange={handleChange("password")}
         name="password"

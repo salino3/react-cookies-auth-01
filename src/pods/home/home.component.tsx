@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  CompanyFormRegister,
   FormLoginCompany,
   FormLoginUser,
   UserFormRegister,
@@ -14,6 +15,10 @@ export const Home: React.FC = () => {
       <details>
         <summary>Register User</summary>
         <UserFormRegister />
+      </details>
+      <details>
+        <summary>Register Company</summary>
+        <CompanyFormRegister />
       </details>
       <hr />
       <details>
