@@ -36,6 +36,11 @@ const routes: PropsRoutes[] = [
     element: <h1>Error: 404</h1>,
     visibility: "public",
   },
+  {
+    path: routesApp?.errorPrivate404,
+    element: <h1>Error Private: 404</h1>,
+    visibility: "private",
+  },
 ];
 
 export const AppRoutes: React.FC = () => {

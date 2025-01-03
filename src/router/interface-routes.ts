@@ -1,19 +1,21 @@
 interface Routes {
   root: string;
-  dashboard: string;
+  error404: string;
   // Private routes
+  dashboard: string;
   private: string;
   users: string;
   companies: string;
-  error404: string;
+  errorPrivate404: string;
 }
 
 export const routesApp: Routes = {
   root: "/react-cookies-auth-01/",
+  error404: "/react-cookies-auth-01/*",
   // Private routes
   private: "/react-cookies-auth-01/private/",
   users: "/react-cookies-auth-01/private/users",
   companies: "/react-cookies-auth-01/private/companies",
   dashboard: "/react-cookies-auth-01/private/dashboard",
-  error404: "/react-cookies-auth-01/*",
+  errorPrivate404: "/react-cookies-auth-01/private/*",
 };
