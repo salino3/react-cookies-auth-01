@@ -16,6 +16,19 @@ export class ServicesApp {
       });
   }
 
+  public static async loginCompany(
+    company: UserLoginForm
+  ): Promise<AxiosResponse> {
+    return await axios
+      .post(`${baseBackend}/auth/companies/login`, company, {
+        withCredentials: true,
+      })
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
+  }
+
   public static async getUsers(): Promise<AxiosResponse<User[]>> {
     return await axios.get(`${baseBackend}/users`);
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormLoginUser } from "./components";
+import { FormLoginCompany, FormLoginUser } from "./components";
 import "./home.styles.scss";
 
 export const Home: React.FC = () => {
@@ -10,6 +10,10 @@ export const Home: React.FC = () => {
       <details>
         <summary>Login Users</summary>
         <FormLoginUser />
+      </details>
+      <details>
+        <summary>Login Companies</summary>
+        <FormLoginCompany />
       </details>
     </div>
   );
