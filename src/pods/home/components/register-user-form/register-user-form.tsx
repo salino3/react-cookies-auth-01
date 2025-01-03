@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BoxInput } from "../../../../common-app";
 import { ServicesApp, UserRegisterForm } from "../../../../core";
-import "./form-register.styles.scss";
+import "./register-user-form.styles.scss";
 
-export const FormRegister: React.FC = () => {
+export const UserFormRegister: React.FC = () => {
   const [formData, setFormData] = useState<UserRegisterForm>({
     name: "",
     surname: "",
@@ -15,7 +15,7 @@ export const FormRegister: React.FC = () => {
 
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
-    if (formData?.age < 18) {
+    if (formData?.age && formData?.age < 18) {
       alert("You must be 18 years old or older to register");
       return;
     }
@@ -27,19 +27,27 @@ export const FormRegister: React.FC = () => {
       alert("Passwords do not match");
       return;
     }
-    ServicesApp?.loginUser(formData);
-    console.log("Form submitted", formData);
+    ServicesApp?.registerUser(formData).then(() => {
+      setFormData({
+        name: "",
+        surname: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+        age: null,
+      });
+      alert("User registered successfully");
+    });
   };
 
   const handleChange =
     (key: keyof UserRegisterForm) =>
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("Form changed", key, formData);
       setFormData({ ...formData, [key]: event.target.value });
     };
 
   return (
-    <form id="RegisterForm" onSubmit={hanldeSubmit}>
+    <form id="UserRegisterForm" onSubmit={hanldeSubmit}>
       <BoxInput
         value={formData?.name || ""}
         onChange={handleChange("name")}
@@ -56,7 +64,7 @@ export const FormRegister: React.FC = () => {
         type="text"
       />
       <BoxInput
-        value={formData?.email || ""}
+        value={formData?.email.toLowerCase().trim() || ""}
         onChange={handleChange("email")}
         name="email"
         pl="Email"

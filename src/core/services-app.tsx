@@ -4,6 +4,22 @@ import { Company, User, UserLoginForm, apisApp } from ".";
 const { baseBackend } = apisApp;
 
 export class ServicesApp {
+  // Auth
+
+  public static async registerUser(user: User): Promise<AxiosResponse> {
+    return await axios.post(`${baseBackend}/auth/users/register`, user, {
+      withCredentials: true,
+    });
+  }
+
+  public static async registerCompany(
+    company: Company
+  ): Promise<AxiosResponse> {
+    return await axios.post(`${baseBackend}/auth/companies/register`, company, {
+      withCredentials: true,
+    });
+  }
+
   public static async loginUser(user: UserLoginForm): Promise<AxiosResponse> {
     return await axios
       .post(`${baseBackend}/auth/users/login`, user, {
