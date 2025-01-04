@@ -38,7 +38,7 @@ export const UsersPage: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {usersData.map((user) => (
+          {usersData.slice(usersData?.length - 5).map((user) => (
             <tr key={user.id}>
               <th scope="row"></th>
               <td>{user.name}</td>
