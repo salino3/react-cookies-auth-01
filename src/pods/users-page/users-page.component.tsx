@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { routesApp } from "../../router";
+import { ServicesApp, User } from "../../core";
 import "./users-page.styles.scss";
 
 export const UsersPage: React.FC = () => {
+  const [usersData, setUsersData] = useState<User[]>([]);
+
+  useEffect(() => {
+    ServicesApp.getUsers()
+      .then((response) => {
+        setUsersData(response.data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <div className="rootUsersPage">
       <section className="breadcrumbs">
@@ -15,9 +26,19 @@ export const UsersPage: React.FC = () => {
           <Link to={routesApp?.users}>Users</Link>
         </span>
       </section>
-      <h1>Users Page</h1>
-      <p>Welcome to the Users Page</p>
-      <p>This page lists all users</p>
+      <h1 className="titleUsersPage">Users Page</h1>
+      <h2 className="subTitleUsersPage">User List</h2>
+      <section className="usersList">
+        <ul>
+          {usersData.map((user) => (
+            <li key={user.id}>
+              <span>{user.name}</span>
+              <span>{user.surname}</span>
+              <span>{user.email}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 };

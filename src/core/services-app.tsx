@@ -45,6 +45,8 @@ export class ServicesApp {
       });
   }
 
+  // GET Data
+
   public static async getUsers(): Promise<AxiosResponse<User[]>> {
     return await axios.get(`${baseBackend}/users`);
   }

@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 1rem;
   border: solid;
   width: 100%;
@@ -25,6 +24,32 @@
 
     a:hover {
       color: var(--color-link);
+    }
+  }
+
+  .titleUsersPage {
+    padding: 0;
+    margin: 0;
+  }
+
+  .subTitleUsersPage {
+    padding: 0;
+    margin: 0;
+  }
+
+  .usersList {
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      gap: 1rem;
+
+      li {
+        span {
+          padding: 1rem;
+        }
+      }
     }
   }
 }
