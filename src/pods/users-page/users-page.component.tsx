@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { routesApp } from "../../router";
 import { ServicesApp, User } from "../../core";
 import "./users-page.styles.scss";
+import { UserCard } from "./components";
 
 export const UsersPage: React.FC = () => {
   const [usersData, setUsersData] = useState<User[]>([]);
@@ -43,24 +44,14 @@ export const UsersPage: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {usersData.slice(usersData?.length - numList).map((user) =>
-            user?.id === lastUserId ? (
-              <tr key={user?.id}>
-                <td colSpan={4} className="smallNoPadding">
-                  <button onClick={() => setNumList((prev) => prev + 5)}>
-                    <small>click here</small>
-                  </button>
-                </td>
-              </tr>
-            ) : (
-              <tr key={user?.id}>
-                <th scope="row"></th>
-                <td>{user?.name}</td>
-                <td>{user?.surname}</td>
-                <td>{user?.email}</td>
-              </tr>
-            )
-          )}
+          {usersData.slice(usersData?.length - numList).map((user: User) => (
+            <UserCard
+              key={user?.id}
+              lastUserId={lastUserId}
+              setNumList={setNumList}
+              user={user}
+            />
+          ))}
         </tbody>
       </table>
     </div>
