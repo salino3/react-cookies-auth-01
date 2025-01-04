@@ -39,6 +39,7 @@
 
   .usersList {
     tbody {
+      position: relative;
       tr {
         th {
           &::before {
@@ -47,6 +48,11 @@
         }
         td {
           padding: 0.5rem;
+        }
+
+        .smallNoPadding {
+          padding: 0;
+          text-align: center;
         }
       }
     }

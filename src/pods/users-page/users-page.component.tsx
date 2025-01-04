@@ -7,6 +7,8 @@ import "./users-page.styles.scss";
 export const UsersPage: React.FC = () => {
   const [usersData, setUsersData] = useState<User[]>([]);
 
+  const [numList, setNumList] = useState<number>(5);
+
   useEffect(() => {
     ServicesApp.getUsers()
       .then((response) => {
@@ -31,20 +33,29 @@ export const UsersPage: React.FC = () => {
       <table className="table usersList">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">👨‍💻</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
           </tr>
         </thead>
         <tbody>
-          {usersData.slice(usersData?.length - 5).map((user) => (
-            <tr key={user.id}>
-              <th scope="row"></th>
-              <td>{user.name}</td>
-              <td>{user.surname}</td>
-              <td>{user.email}</td>
-            </tr>
+          {usersData.slice(usersData?.length - numList).map((user) => (
+            <React.Fragment key={user?.id}>
+              <tr>
+                <th scope="row"></th>
+                <td>{user?.name}</td>
+                <td>{user?.surname}</td>
+                <td>{user?.email}</td>
+              </tr>
+              {user?.id == usersData[usersData?.length - 1]?.id && (
+                <tr>
+                  <td colSpan={4} className="smallNoPadding">
+                    <small>click here</small>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
           ))}
         </tbody>
       </table>
