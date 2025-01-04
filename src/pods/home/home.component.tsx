@@ -5,11 +5,13 @@ import {
   FormLoginUser,
   UserFormRegister,
 } from "./components";
+import { Header } from "../../common-app";
 import "./home.styles.scss";
 
 export const Home: React.FC = () => {
   return (
     <div className="rootHomePage">
+      <Header />
       <h1>Home Page</h1>
       <p>Welcome to the Home Page</p>
       <details>

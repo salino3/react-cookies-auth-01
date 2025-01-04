@@ -1,0 +1,35 @@
+.rootHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
+  border: solid 1px;
+  width: 100%;
+  box-sizing: border-box;
+
+  nav {
+    ul {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0;
+      margin: 0;
+      li {
+        background-color: var(--color-six);
+        border-radius: 0.5rem;
+        list-style: none;
+        padding: 1rem;
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: var(--color-link);
+        }
+      }
+    }
+  }
+}
