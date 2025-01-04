@@ -17,6 +17,9 @@ export const UsersPage: React.FC = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  const lastUserId: number | undefined =
+    usersData?.length > 0 ? usersData[usersData.length - 1]?.id : 0;
+
   return (
     <div className="rootUsersPage">
       <section className="breadcrumbs">
@@ -40,23 +43,24 @@ export const UsersPage: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {usersData.slice(usersData?.length - numList).map((user) => (
-            <React.Fragment key={user?.id}>
-              <tr>
+          {usersData.slice(usersData?.length - numList).map((user) =>
+            user?.id === lastUserId ? (
+              <tr key={user?.id}>
+                <td colSpan={4} className="smallNoPadding">
+                  <button>
+                    <small>click here</small>
+                  </button>
+                </td>
+              </tr>
+            ) : (
+              <tr key={user?.id}>
                 <th scope="row"></th>
                 <td>{user?.name}</td>
                 <td>{user?.surname}</td>
                 <td>{user?.email}</td>
               </tr>
-              {user?.id == usersData[usersData?.length - 1]?.id && (
-                <tr>
-                  <td colSpan={4} className="smallNoPadding">
-                    <small>click here</small>
-                  </td>
-                </tr>
-              )}
-            </React.Fragment>
-          ))}
+            )
+          )}
         </tbody>
       </table>
     </div>
