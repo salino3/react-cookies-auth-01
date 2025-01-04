@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { HomeLayout } from "../layouts";
+import { DashboardLayout, HomeLayout } from "../layouts";
 import { routesApp } from "./interface-routes";
 import { PrivateRoutes, PublicRoutes } from "./routes";
 
@@ -28,7 +28,7 @@ const routes: PropsRoutes[] = [
   },
   {
     path: routesApp?.dashboard,
-    element: <h1>Dashboard</h1>,
+    element: <DashboardLayout />,
     visibility: "private",
   },
   {
