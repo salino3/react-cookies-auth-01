@@ -1,5 +1,6 @@
 import React from "react";
 import { User } from "../../../../core";
+import "./user-card.styles.scss";
 
 interface Props {
   setNumList: React.Dispatch<React.SetStateAction<number>>;
@@ -14,12 +15,12 @@ export const UserCard: React.FC<Props> = (props) => {
     <tr>
       <td colSpan={4} className="smallNoPadding">
         <button onClick={() => setNumList((prev) => prev + 5)}>
-          <small>click here</small>
+          <small>see more</small>
         </button>
       </td>
     </tr>
   ) : (
-    <tr>
+    <tr className="trCard">
       <th scope="row"></th>
       <td>{user?.name}</td>
       <td>{user?.surname}</td>

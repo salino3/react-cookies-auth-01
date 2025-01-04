@@ -36,25 +36,4 @@
     padding: 0;
     margin: 0;
   }
-
-  .usersList {
-    tbody {
-      position: relative;
-      tr {
-        th {
-          &::before {
-            content: "•";
-          }
-        }
-        td {
-          padding: 0.5rem;
-        }
-
-        .smallNoPadding {
-          padding: 0;
-          text-align: center;
-        }
-      }
-    }
-  }
 }
