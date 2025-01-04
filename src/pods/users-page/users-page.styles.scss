@@ -38,16 +38,15 @@
   }
 
   .usersList {
-    ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: start;
-      gap: 1rem;
-
-      li {
-        span {
-          padding: 1rem;
+    tbody {
+      tr {
+        th {
+          &::before {
+            content: "•";
+          }
+        }
+        td {
+          padding: 0.5rem;
         }
       }
     }

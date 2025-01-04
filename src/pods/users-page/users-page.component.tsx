@@ -28,17 +28,26 @@ export const UsersPage: React.FC = () => {
       </section>
       <h1 className="titleUsersPage">Users Page</h1>
       <h2 className="subTitleUsersPage">User List</h2>
-      <section className="usersList">
-        <ul>
+      <table className="table usersList">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
           {usersData.map((user) => (
-            <li key={user.id}>
-              <span>{user.name}</span>
-              <span>{user.surname}</span>
-              <span>{user.email}</span>
-            </li>
+            <tr key={user.id}>
+              <th scope="row"></th>
+              <td>{user.name}</td>
+              <td>{user.surname}</td>
+              <td>{user.email}</td>
+            </tr>
           ))}
-        </ul>
-      </section>
+        </tbody>
+      </table>
     </div>
   );
 };
