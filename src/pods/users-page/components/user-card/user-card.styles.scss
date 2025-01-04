@@ -1,0 +1,15 @@
+.smallNoPadding {
+  padding: 0;
+  text-align: center;
+}
+
+.trCard {
+  th {
+    &::before {
+      content: "•";
+    }
+  }
+  td {
+    padding: 0.5rem;
+  }
+}
