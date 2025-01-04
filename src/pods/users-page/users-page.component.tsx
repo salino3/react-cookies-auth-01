@@ -47,7 +47,7 @@ export const UsersPage: React.FC = () => {
             user?.id === lastUserId ? (
               <tr key={user?.id}>
                 <td colSpan={4} className="smallNoPadding">
-                  <button>
+                  <button onClick={() => setNumList((prev) => prev + 5)}>
                     <small>click here</small>
                   </button>
                 </td>
