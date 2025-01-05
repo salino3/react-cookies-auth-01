@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { routesApp } from "../../router";
 import { ServicesApp, User } from "../../core";
-import "./view-user.styles.scss";
 import { BaseModal } from "../../common";
+import { routesApp } from "../../router";
+import "./view-user.styles.scss";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
