@@ -22,6 +22,11 @@ const routes: PropsRoutes[] = [
     visibility: "public",
   },
   {
+    path: routesApp?.user(":id"),
+    element: <h1>Route User</h1>,
+    visibility: "private",
+  },
+  {
     path: routesApp?.users,
     element: <UsersLayout />,
     visibility: "private",
