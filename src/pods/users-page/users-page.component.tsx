@@ -34,7 +34,7 @@ export const UsersPage: React.FC = () => {
       </section>
       <h1 className="titleUsersPage">Users Page</h1>
       <h2 className="subTitleUsersPage">User List</h2>
-      <table className="table">
+      <table className="table userList">
         <thead>
           <tr>
             <th scope="col">👨‍💻</th>

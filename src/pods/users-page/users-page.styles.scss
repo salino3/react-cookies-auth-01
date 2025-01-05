@@ -36,4 +36,34 @@
     padding: 0;
     margin: 0;
   }
+
+  .userList {
+    thead {
+      tr {
+        th {
+          background-color: var(--color-four);
+        }
+      }
+
+      th:first-child {
+        border-top-left-radius: 12px;
+      }
+
+      th:last-child {
+        border-top-right-radius: 12px;
+      }
+    }
+    tbody {
+      tr:nth-child(even) {
+        background-color: var(--color-eight);
+      }
+      tr:nth-child(odd) {
+        background-color: var(--color-seven);
+      }
+
+      tr:last-child {
+        background-color: unset;
+      }
+    }
+  }
 }

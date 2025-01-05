@@ -1,9 +1,9 @@
 .smallNoPadding {
-  padding: 0;
   text-align: center;
 }
 
 .trCard {
+  cursor: pointer;
   th {
     &::before {
       content: "•";
