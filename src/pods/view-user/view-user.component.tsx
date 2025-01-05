@@ -4,11 +4,13 @@ import { AxiosResponse } from "axios";
 import { routesApp } from "../../router";
 import { ServicesApp, User } from "../../core";
 import "./view-user.styles.scss";
+import { BaseModal } from "../../common";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
 
   const [userData, setUserData] = useState<User>();
+  const [action, setAction] = useState<string>("");
 
   useEffect(() => {
     ServicesApp?.getUserById(id || "")
@@ -47,12 +49,26 @@ export const ViewUser: React.FC = () => {
               <span>Age:</span> <span>{userData?.age}</span>
             </p>
             <div className="boxbtnsCard">
-              <button className="btnUpdateCard">Update</button>
-              <button className="btnDeleteCard">Delete</button>
+              <button
+                className="btnUpdateCard"
+                onClick={() => setAction("update")}
+              >
+                Update
+              </button>
+              <button
+                className="btnDeleteCard"
+                onClick={() => setAction("delete")}
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {/* Modal */}
+      <BaseModal showModal={!!action} title={action}>
+        <div>¡Hola!</div>
+      </BaseModal>
     </div>
   );
 };
