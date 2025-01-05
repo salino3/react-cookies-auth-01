@@ -1,0 +1,57 @@
+.rootUserPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+
+  .breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+    gap: 0.5rem;
+    padding: 0.25rem;
+    align-self: flex-start;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--color-link);
+    }
+  }
+
+  .containerUserPage {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid;
+
+    .cardUserPage {
+      width: 400px;
+      padding: 1rem;
+      box-sizing: border-box;
+      border-radius: 5px;
+      background-color: var(--color-six);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      gap: 0.5rem;
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      h5 {
+        margin: 0rem;
+        padding: 0rem;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
