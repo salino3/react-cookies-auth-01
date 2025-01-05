@@ -46,6 +46,10 @@ export const ViewUser: React.FC = () => {
             <p className="card-text">
               <span>Age:</span> <span>{userData?.age}</span>
             </p>
+            <div className="boxbtnsCard">
+              <button className="btnUpdateCard">Update</button>
+              <button className="btnDeleteCard">Delete</button>
+            </div>
           </div>
         </div>
       </div>
