@@ -26,3 +26,56 @@ body {
 html {
   font-size: 16px;
 }
+
+body {
+  font-family: Arial, Helvetica, sans-serif !important;
+  #light {
+    color: var(--color-one) !important;
+    background-color: var(--color-nine);
+
+    button {
+      color: var(--color-two);
+      background-color: var(--color-six);
+    }
+    .selectedLanguage {
+      background-color: var(--color-five);
+    }
+    .primaryBtn {
+      color: var(--color-two);
+      background-color: var(--color-six);
+    }
+    .secundaryBtn {
+      color: var(--color-six);
+      background-color: var(--color-two);
+    }
+  }
+
+  #dark {
+    color: var(--color-seven) !important;
+    background-color: var(--color-two);
+    button {
+      color: var(--color-six);
+      background-color: var(--color-five);
+    }
+    .selectedLanguage {
+      background-color: var(--color-nine);
+    }
+    .primaryBtn {
+      color: var(--color-six);
+      background-color: var(--color-five);
+    }
+    .secundaryBtn {
+      color: var(--color-six);
+      background-color: var(--color-ten);
+    }
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:active {
+    scale: 0.97;
+    opacity: 0.5;
+  }
+}

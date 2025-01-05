@@ -80,12 +80,12 @@
       .card-body {
         .boxbtnsCard {
           .btnUpdateCard {
-            background-color: blue;
-            color: var(--color-six);
+            background-color: blue !important;
+            color: var(--color-six) !important;
           }
           .btnDeleteCard {
-            background-color: red;
-            color: var(--color-six);
+            background-color: red !important;
+            color: var(--color-six) !important;
           }
         }
       }

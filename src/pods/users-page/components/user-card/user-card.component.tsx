@@ -18,7 +18,10 @@ export const UserCard: React.FC<Props> = (props) => {
   return user?.id === lastUserId ? (
     <tr>
       <td colSpan={4} className="smallNoPadding">
-        <button onClick={() => setNumList((prev) => prev + 5)}>
+        <button
+          className="secundaryBtn"
+          onClick={() => setNumList((prev) => prev + 5)}
+        >
           <small>see more</small>
         </button>
       </td>
