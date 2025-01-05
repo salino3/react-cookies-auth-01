@@ -66,9 +66,15 @@ export const ViewUser: React.FC = () => {
         </div>
       </div>
       {/* Modal */}
-      <BaseModal showModal={!!action} title={action}>
-        <div>¡Hola!</div>
-      </BaseModal>
+      {action && (
+        <BaseModal
+          title={action}
+          showModal={!!action}
+          onClose={() => setAction("")}
+        >
+          <div>¡Hola!</div>
+        </BaseModal>
+      )}
     </div>
   );
 };
