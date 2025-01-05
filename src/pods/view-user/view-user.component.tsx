@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { routesApp } from "../../router";
 import { ServicesApp, User } from "../../core";
+import { BaseModal } from "../../common";
+import { routesApp } from "../../router";
 import "./view-user.styles.scss";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
 
   const [userData, setUserData] = useState<User>();
+  const [action, setAction] = useState<string>("");
 
   useEffect(() => {
     ServicesApp?.getUserById(id || "")
@@ -47,12 +49,32 @@ export const ViewUser: React.FC = () => {
               <span>Age:</span> <span>{userData?.age}</span>
             </p>
             <div className="boxbtnsCard">
-              <button className="btnUpdateCard">Update</button>
-              <button className="btnDeleteCard">Delete</button>
+              <button
+                className="btnUpdateCard"
+                onClick={() => setAction("update")}
+              >
+                Update
+              </button>
+              <button
+                className="btnDeleteCard"
+                onClick={() => setAction("delete")}
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {action && (
+        <BaseModal
+          title={action}
+          showModal={!!action}
+          onClose={() => setAction("")}
+        >
+          <div>¡Hola!</div>
+        </BaseModal>
+      )}
     </div>
   );
 };
