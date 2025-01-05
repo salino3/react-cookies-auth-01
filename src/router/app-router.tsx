@@ -1,13 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { PrivateRoutes, PublicRoutes } from "./routes";
 import {
   CompaniesLayout,
   DashboardLayout,
   HomeLayout,
   UsersLayout,
+  ViewUserLayout,
 } from "../layouts";
 import { routesApp } from "./interface-routes";
-import { PrivateRoutes, PublicRoutes } from "./routes";
 
 interface PropsRoutes {
   path: string;
@@ -24,6 +25,11 @@ const routes: PropsRoutes[] = [
   {
     path: routesApp?.users,
     element: <UsersLayout />,
+    visibility: "private",
+  },
+  {
+    path: routesApp?.user(":id"),
+    element: <ViewUserLayout />,
     visibility: "private",
   },
   {

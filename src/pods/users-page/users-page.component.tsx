@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { routesApp } from "../../router";
+import { AxiosResponse } from "axios";
 import { ServicesApp, User } from "../../core";
-import "./users-page.styles.scss";
 import { UserCard } from "./components";
+import { routesApp } from "../../router";
+import "./users-page.styles.scss";
 
 export const UsersPage: React.FC = () => {
   const [usersData, setUsersData] = useState<User[]>([]);
@@ -12,7 +13,7 @@ export const UsersPage: React.FC = () => {
 
   useEffect(() => {
     ServicesApp.getUsers()
-      .then((response) => {
+      .then((response: AxiosResponse<User[], any>) => {
         setUsersData(response.data);
       })
       .catch((error) => console.error(error));
@@ -34,7 +35,7 @@ export const UsersPage: React.FC = () => {
       </section>
       <h1 className="titleUsersPage">Users Page</h1>
       <h2 className="subTitleUsersPage">User List</h2>
-      <table className="table">
+      <table className="table userList">
         <thead>
           <tr>
             <th scope="col">👨‍💻</th>

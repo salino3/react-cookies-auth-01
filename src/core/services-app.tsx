@@ -54,4 +54,8 @@ export class ServicesApp {
   public static async getCompanies(): Promise<AxiosResponse<Company[]>> {
     return await axios.get(`${baseBackend}/companies`);
   }
+
+  public static async getUserById(id: string): Promise<AxiosResponse<User>> {
+    return await axios.get(`${baseBackend}/users/${id}`);
+  }
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { routesApp } from "../../../../router";
 import { User } from "../../../../core";
 import "./user-card.styles.scss";
 
@@ -11,6 +13,8 @@ interface Props {
 export const UserCard: React.FC<Props> = (props) => {
   const { setNumList, user, lastUserId } = props;
 
+  const navigate = useNavigate();
+
   return user?.id === lastUserId ? (
     <tr>
       <td colSpan={4} className="smallNoPadding">
@@ -20,7 +24,10 @@ export const UserCard: React.FC<Props> = (props) => {
       </td>
     </tr>
   ) : (
-    <tr className="trCard">
+    <tr
+      onClick={() => navigate(routesApp?.user(String(user?.id)))}
+      className="trCard"
+    >
       <th scope="row"></th>
       <td>{user?.name}</td>
       <td>{user?.surname}</td>
