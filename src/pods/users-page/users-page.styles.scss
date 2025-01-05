@@ -64,6 +64,12 @@
       tr:last-child {
         background-color: unset;
       }
+      tr:hover {
+        background-color: var(--color-ten);
+      }
+      tr:hover:last-child {
+        background-color: unset;
+      }
     }
   }
 }
