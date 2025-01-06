@@ -1,0 +1,14 @@
+#updateFormUser {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: var(--color-nine);
+}

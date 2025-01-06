@@ -5,6 +5,7 @@ import { ServicesApp, User } from "../../core";
 import { BaseModal } from "../../common";
 import { routesApp } from "../../router";
 import "./view-user.styles.scss";
+import { UpdateFormUser } from "./components";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
@@ -72,7 +73,7 @@ export const ViewUser: React.FC = () => {
           showModal={!!action}
           onClose={() => setAction("")}
         >
-          <div>¡Hola!</div>
+          {action === "update" ? <UpdateFormUser /> : <div>Delete</div>}
         </BaseModal>
       )}
     </div>
