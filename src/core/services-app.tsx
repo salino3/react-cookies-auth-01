@@ -58,4 +58,15 @@ export class ServicesApp {
   public static async getUserById(id: string): Promise<AxiosResponse<User>> {
     return await axios.get(`${baseBackend}/users/${id}`);
   }
+
+  // Update Data
+  public static async updateUser(user: User): Promise<AxiosResponse> {
+    return await axios.put(`${baseBackend}/users/${user.id}`, user, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+        "end_token": "7902",
+      },
+    });
+  }
 }

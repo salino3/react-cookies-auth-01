@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BoxInput } from "../../../../common-app";
-import { User } from "../../../../core";
+import { ServicesApp, User } from "../../../../core";
 import "./update-form-user.styles.scss";
 
 interface Props {
@@ -12,7 +12,13 @@ export const UpdateFormUser: React.FC<Props> = ({ user }) => {
 
   function hanldeSubmit(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();
-    // TODO: Update user
+
+    if (formData?.age && formData?.age < 18) {
+      alert("You must be 18 years old or older to register");
+      return;
+    }
+
+    ServicesApp?.updateUser(formData);
   }
 
   const handleChange =
