@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { routesApp } from "../router";
+
 export const useAppFunctions = () => {
+  const navigate = useNavigate();
   //
   function getEndTokenFromCookie() {
     const cookies = document.cookie.split(";");
@@ -21,6 +25,21 @@ export const useAppFunctions = () => {
   };
 
   //
+  const closeSession = (): void => {
+    const cookies = document.cookie.split(";");
+
+    for (let i = 0; i < cookies.length; i++) {
+      const [key] = cookies[i].trim().split("=");
+      if (key.startsWith(import.meta.env.VITE_APP_COOKIE_AUTH)) {
+        document.cookie = `${key}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+        window.location.href = routesApp?.root;
+        return;
+      }
+    }
+  };
+
+  //
   const getWordPrefix = (str: string, word: string = "@") => {
     if (str && typeof str === "string") {
       const atIndex = str.indexOf(word);
@@ -36,9 +55,11 @@ export const useAppFunctions = () => {
   }
 
   return {
-    getWordPrefix,
     getEndTokenFromCookie,
     getAuthToken,
+    closeSession,
+    //
+    getWordPrefix,
     capitalizeFirst,
   };
 };

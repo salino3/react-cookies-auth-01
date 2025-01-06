@@ -10,7 +10,7 @@ export const UserFormRegister: React.FC = () => {
     email: "",
     password: "",
     passwordConfirm: "",
-    age: 0,
+    age: null,
   });
 
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -56,7 +56,7 @@ export const UserFormRegister: React.FC = () => {
         pl="Name"
         type="text"
         rq
-      />{" "}
+      />
       <BoxInput
         txt="Surname"
         value={formData?.surname || ""}
