@@ -19,7 +19,11 @@ export const UpdateFormUser: React.FC<Props> = ({ user, setAction }) => {
       return;
     }
 
-    ServicesApp?.updateUser(formData).then(() => setAction(""));
+    ServicesApp?.updateUser(formData)
+      .then(() => {
+        ServicesApp?.getUserById(String(user?.id) || "");
+      })
+      .then(() => setAction(""));
   }
 
   const handleChange =
