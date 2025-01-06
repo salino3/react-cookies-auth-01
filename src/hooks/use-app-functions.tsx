@@ -1,8 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import { routesApp } from "../router";
 
 export const useAppFunctions = () => {
-  const navigate = useNavigate();
   //
   function getEndTokenFromCookie() {
     const cookies = document.cookie.split(";");

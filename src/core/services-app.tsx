@@ -1,7 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { Company, User, UserLoginForm, apisApp } from ".";
+import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
+
+const { getEndTokenFromCookie } = useAppFunctions();
 
 export class ServicesApp {
   // Auth
@@ -65,7 +68,7 @@ export class ServicesApp {
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
-        "end_token": "7902",
+        "end_token": getEndTokenFromCookie(),
       },
     });
   }
