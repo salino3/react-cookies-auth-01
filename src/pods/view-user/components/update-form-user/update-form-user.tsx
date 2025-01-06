@@ -5,9 +5,10 @@ import "./update-form-user.styles.scss";
 
 interface Props {
   user: User;
+  setAction: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const UpdateFormUser: React.FC<Props> = ({ user }) => {
+export const UpdateFormUser: React.FC<Props> = ({ user, setAction }) => {
   const [formData, setFormData] = useState<User>(user);
 
   function hanldeSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -18,7 +19,7 @@ export const UpdateFormUser: React.FC<Props> = ({ user }) => {
       return;
     }
 
-    ServicesApp?.updateUser(formData);
+    ServicesApp?.updateUser(formData).then(() => setAction(""));
   }
 
   const handleChange =

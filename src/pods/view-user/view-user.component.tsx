@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
 import { ServicesApp, User } from "../../core";
 import { BaseModal } from "../../common";
+import { UpdateFormUser } from "./components";
 import { routesApp } from "../../router";
 import "./view-user.styles.scss";
-import { UpdateFormUser } from "./components";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
@@ -16,6 +16,7 @@ export const ViewUser: React.FC = () => {
     email: "",
     age: null,
   });
+
   const [action, setAction] = useState<string>("");
 
   useEffect(() => {
@@ -79,7 +80,7 @@ export const ViewUser: React.FC = () => {
           onClose={() => setAction("")}
         >
           {action === "update" ? (
-            <UpdateFormUser user={userData} />
+            <UpdateFormUser user={userData} setAction={setAction} />
           ) : (
             <div>Delete</div>
           )}

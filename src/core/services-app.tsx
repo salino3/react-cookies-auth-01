@@ -64,12 +64,21 @@ export class ServicesApp {
 
   // Update Data
   public static async updateUser(user: User): Promise<AxiosResponse> {
-    return await axios.put(`${baseBackend}/users/${user.id}`, user, {
-      withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-        "end_token": getEndTokenFromCookie(),
-      },
-    });
+    return await axios
+      .put(`${baseBackend}/users/${user.id}`, user, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "end_token": getEndTokenFromCookie(),
+        },
+      })
+      .then((res: AxiosResponse) => {
+        alert("User successfully updated");
+        return res;
+      })
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
   }
 }
