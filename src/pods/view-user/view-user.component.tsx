@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
 import { ServicesApp, User } from "../../core";
 import { BaseModal } from "../../common";
-import { UpdateFormUser } from "./components";
+import { DeleteFormUser, UpdateFormUser } from "./components";
 import { routesApp } from "../../router";
 import "./view-user.styles.scss";
 
@@ -75,6 +75,7 @@ export const ViewUser: React.FC = () => {
       {/* Modal */}
       {action && (
         <BaseModal
+          minHeight={action === "delete" ? "40%" : "70%"}
           title={action}
           showModal={!!action}
           onClose={() => setAction("")}
@@ -82,7 +83,7 @@ export const ViewUser: React.FC = () => {
           {action === "update" ? (
             <UpdateFormUser user={userData} setAction={setAction} />
           ) : (
-            <div>Delete</div>
+            <DeleteFormUser />
           )}
         </BaseModal>
       )}

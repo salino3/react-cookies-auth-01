@@ -1,0 +1,33 @@
+.containerFormDeleteUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+  padding: 1rem 2rem;
+
+  #deleteFormUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    flex: 0.5;
+    min-height: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: var(--color-nine);
+
+    p {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: solid;
+    }
+  }
+}
