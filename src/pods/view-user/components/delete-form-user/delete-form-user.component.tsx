@@ -1,16 +1,31 @@
 import React, { useState } from "react";
+import { ServicesApp } from "../../../../core";
+import { useAppFunctions } from "../../../../hooks";
 import { BoxInput } from "../../../../common-app";
 import "./delete-form-user.styles.scss";
 
-export const DeleteFormUser: React.FC = () => {
+export const DeleteFormUser: React.FC<{ id: number }> = ({ id }) => {
+  const { closeSession } = useAppFunctions();
   const [answer, setAnswer] = useState<string>("");
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log(id);
+    if (answer === "Yes") {
+      ServicesApp?.deleteUser(String(id)).then(() => closeSession());
+    } else {
+      alert("You must type 'Yes' to confirm the deletion");
+      setAnswer("");
+    }
+  }
+
   return (
     <div className="containerFormDeleteUser">
-      <form id="deleteFormUser">
+      <form id="deleteFormUser" onSubmit={handleSubmit}>
         <p>
           <span> Are you sure you want to delete your profile?</span>{" "}
           <span>
-            Please type "<b>YES</b>" below to confirm.
+            Please type "<b>Yes</b>" below to confirm.
           </span>
           <br />
           <strong>Warning:</strong>
@@ -20,7 +35,7 @@ export const DeleteFormUser: React.FC = () => {
           name="answer"
           type="text"
           rq
-          value={answer}
+          value={answer.trim()}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             setAnswer(event?.target.value)
           }

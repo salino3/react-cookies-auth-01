@@ -83,7 +83,7 @@ export const ViewUser: React.FC = () => {
           {action === "update" ? (
             <UpdateFormUser user={userData} setAction={setAction} />
           ) : (
-            <DeleteFormUser />
+            <DeleteFormUser id={userData?.id || 0} />
           )}
         </BaseModal>
       )}

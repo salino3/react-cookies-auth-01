@@ -48,7 +48,7 @@ export class ServicesApp {
       });
   }
 
-  // GET Data
+  // Get Data
 
   public static async getUsers(): Promise<AxiosResponse<User[]>> {
     return await axios.get(`${baseBackend}/users`);
@@ -79,6 +79,22 @@ export class ServicesApp {
       .catch((err) => {
         console.error(err);
         return Promise.reject(err);
+      });
+  }
+
+  // Delete
+  public static async deleteUser(id: string): Promise<AxiosResponse> {
+    return await axios
+      .delete(`${baseBackend}/users/${id}`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "end_token": getEndTokenFromCookie(),
+        },
+      })
+      .then((res: AxiosResponse) => {
+        alert("User successfully deleted");
+        return res;
       });
   }
 }
