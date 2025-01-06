@@ -3,13 +3,20 @@ import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
 import { ServicesApp, User } from "../../core";
 import { BaseModal } from "../../common";
+import { DeleteFormUser, UpdateFormUser } from "./components";
 import { routesApp } from "../../router";
 import "./view-user.styles.scss";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
 
-  const [userData, setUserData] = useState<User>();
+  const [userData, setUserData] = useState<User>({
+    name: "",
+    surname: "",
+    email: "",
+    age: null,
+  });
+
   const [action, setAction] = useState<string>("");
 
   useEffect(() => {
@@ -68,11 +75,16 @@ export const ViewUser: React.FC = () => {
       {/* Modal */}
       {action && (
         <BaseModal
+          minHeight={action === "delete" ? "40%" : "70%"}
           title={action}
           showModal={!!action}
           onClose={() => setAction("")}
         >
-          <div>¡Hola!</div>
+          {action === "update" ? (
+            <UpdateFormUser user={userData} setAction={setAction} />
+          ) : (
+            <DeleteFormUser id={userData?.id || 0} />
+          )}
         </BaseModal>
       )}
     </div>

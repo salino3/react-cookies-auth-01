@@ -1,7 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { Company, User, UserLoginForm, apisApp } from ".";
+import { useAppFunctions } from "../hooks";
 
 const { baseBackend } = apisApp;
+
+const { getEndTokenFromCookie } = useAppFunctions();
 
 export class ServicesApp {
   // Auth
@@ -45,7 +48,7 @@ export class ServicesApp {
       });
   }
 
-  // GET Data
+  // Get Data
 
   public static async getUsers(): Promise<AxiosResponse<User[]>> {
     return await axios.get(`${baseBackend}/users`);
@@ -57,5 +60,41 @@ export class ServicesApp {
 
   public static async getUserById(id: string): Promise<AxiosResponse<User>> {
     return await axios.get(`${baseBackend}/users/${id}`);
+  }
+
+  // Update Data
+  public static async updateUser(user: User): Promise<AxiosResponse> {
+    return await axios
+      .put(`${baseBackend}/users/${user.id}`, user, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "end_token": getEndTokenFromCookie(),
+        },
+      })
+      .then((res: AxiosResponse) => {
+        alert("User successfully updated");
+        return res;
+      })
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
+  }
+
+  // Delete
+  public static async deleteUser(id: string): Promise<AxiosResponse> {
+    return await axios
+      .delete(`${baseBackend}/users/${id}`, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          "end_token": getEndTokenFromCookie(),
+        },
+      })
+      .then((res: AxiosResponse) => {
+        alert("User successfully deleted");
+        return res;
+      });
   }
 }
