@@ -3,13 +3,12 @@ import { BoxInput } from "../../../../common-app";
 import { User } from "../../../../core";
 import "./update-form-user.styles.scss";
 
-export const UpdateFormUser: React.FC = () => {
-  const [formData, setFormData] = useState<User>({
-    name: "",
-    surname: "",
-    email: "",
-    age: null,
-  });
+interface Props {
+  user: User;
+}
+
+export const UpdateFormUser: React.FC<Props> = ({ user }) => {
+  const [formData, setFormData] = useState<User>(user);
 
   function hanldeSubmit(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault();

@@ -10,7 +10,12 @@ import { UpdateFormUser } from "./components";
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
 
-  const [userData, setUserData] = useState<User>();
+  const [userData, setUserData] = useState<User>({
+    name: "",
+    surname: "",
+    email: "",
+    age: null,
+  });
   const [action, setAction] = useState<string>("");
 
   useEffect(() => {
@@ -73,7 +78,11 @@ export const ViewUser: React.FC = () => {
           showModal={!!action}
           onClose={() => setAction("")}
         >
-          {action === "update" ? <UpdateFormUser /> : <div>Delete</div>}
+          {action === "update" ? (
+            <UpdateFormUser user={userData} />
+          ) : (
+            <div>Delete</div>
+          )}
         </BaseModal>
       )}
     </div>
