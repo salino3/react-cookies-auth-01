@@ -4,8 +4,10 @@ import "./update-form-user.styles.scss";
 
 export const UpdateFormUser: React.FC = () => {
   return (
-    <form id="updateFormUser">
-      <BoxInput name="Name" txt="name" type="text" pl="Name" value={""} rq />
-    </form>
+    <div className="containerFormUpdateUser">
+      <form id="updateFormUser">
+        <BoxInput name="Name" txt="name" type="text" pl="Name" value={""} rq />
+      </form>
+    </div>
   );
 };

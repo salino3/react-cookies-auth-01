@@ -1,14 +1,25 @@
-#updateFormUser {
+.containerFormUpdateUser {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
   flex: 1;
   min-height: 0;
-  overflow-y: auto;
-  box-sizing: border-box;
-  background-color: var(--color-nine);
+  padding: 1rem 2rem;
+
+  #updateFormUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: var(--color-nine);
+  }
 }
