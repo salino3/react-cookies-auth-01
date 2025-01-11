@@ -65,12 +65,23 @@ export class ServicesApp {
     );
   }
 
+  public static async getUserById(id: string): Promise<AxiosResponse<User>> {
+    return await axios.get(`${baseBackend}/users/${id}`);
+  }
+
   public static async getCompanies(): Promise<AxiosResponse<Company[]>> {
     return await axios.get(`${baseBackend}/companies`);
   }
 
-  public static async getUserById(id: string): Promise<AxiosResponse<User>> {
-    return await axios.get(`${baseBackend}/users/${id}`);
+  public static async getBatchCompanies(
+    limit: number = 5,
+    offset: number = 0
+  ): Promise<AxiosResponse<User[]>> {
+    return await axios.get(
+      `${baseBackend}/companies/batch/get?limit=${String(
+        limit
+      )}&offset=${String(offset)}`
+    );
   }
 
   // Update Data
