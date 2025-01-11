@@ -30,7 +30,7 @@ export interface CurrentAccount {
 export interface StateApp {
   theme: "light" | "dark";
   workRelationships: WorkRelationships[];
-  currentAccount: any | null;
+  currentAccount: CurrentAccount | null;
 }
 
 export interface GlobalStateApp {

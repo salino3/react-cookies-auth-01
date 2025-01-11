@@ -41,7 +41,6 @@ export const useAppFunctions = () => {
 
     // Verifiying it is divided in 3 parts - header, payload and signature
     if (authCookieSplitted && authCookieSplitted.split(".").length === 3) {
-      console.log("authCookieSplitted", authCookieSplitted);
       try {
         const decoded: any = jwtDecode(authCookieSplitted);
 

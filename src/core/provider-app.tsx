@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { initialState, ReducerApp, GlobalAppContext, CurrentAccount } from ".";
 
 interface Props {
@@ -8,22 +8,16 @@ interface Props {
 export const ProviderApp: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = React.useReducer(ReducerApp, initialState);
 
-  // let account: string = "currentAccount";
-
-  // const [currentAccount, setCurrentAccount] = useState<any | null>(
-  //   window.localStorage.getItem(account || "")
-  // );
-
   //
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     dispatch({
       type: "UPDATE_THEME",
       payload: state.theme === "light" ? "dark" : "light",
     });
-  };
+  }, []);
 
   // login account
-  const loginAccount = useCallback(function (info: any) {
+  const loginAccount = useCallback(function (info: CurrentAccount) {
     dispatch({
       type: "LOGIN_ACCOUNT",
       payload: info,

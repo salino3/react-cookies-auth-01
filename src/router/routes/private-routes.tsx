@@ -13,9 +13,10 @@ export const PrivateRoutes: React.FC = () => {
 
   React.useEffect(() => {
     const token = getAuthToken();
-    loginAccount(token);
     if (!token) {
       navigate(routesApp.root);
+    } else {
+      loginAccount(token);
     }
   }, []);
 
