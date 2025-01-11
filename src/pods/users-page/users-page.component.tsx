@@ -8,19 +8,25 @@ import "./users-page.styles.scss";
 
 export const UsersPage: React.FC = () => {
   const [usersData, setUsersData] = useState<User[]>([]);
-
   const [numList, setNumList] = useState<number>(5);
+  const [showSeeMore, setShowSeeMore] = useState<boolean>(true);
 
   useEffect(() => {
-    ServicesApp.getUsers()
+    ServicesApp.getBatchUsers(5, numList)
       .then((response: AxiosResponse<User[], any>) => {
-        setUsersData(response.data);
+        setUsersData((prev) => [...prev, ...response.data]);
       })
-      .catch((error) => console.error(error));
-  }, []);
-
-  const lastUserId: number | undefined =
-    usersData?.length > 0 ? usersData[usersData.length - 1]?.id : 0;
+      .catch((error) => {
+        if (
+          error.status === 404 &&
+          error.response &&
+          error.response.data === "No users found."
+        ) {
+          setShowSeeMore(false);
+        }
+        console.error(error);
+      });
+  }, [numList]);
 
   return (
     <div className="rootUsersPage">
@@ -45,14 +51,21 @@ export const UsersPage: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {usersData.slice(usersData?.length - numList).map((user: User) => (
-            <UserCard
-              key={user?.id}
-              lastUserId={lastUserId}
-              setNumList={setNumList}
-              user={user}
-            />
+          {usersData.map((user: User) => (
+            <UserCard key={user?.id} user={user} />
           ))}
+          {showSeeMore && (
+            <tr>
+              <td colSpan={4} className="smallNoPadding">
+                <button
+                  className="secundaryBtn"
+                  onClick={() => setNumList((prev) => prev + 5)}
+                >
+                  <small>see more</small>
+                </button>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
