@@ -12,7 +12,7 @@ export const PublicRoutes: React.FC = () => {
     if (token && token?.id) {
       navigate(routesApp.dashboard);
     }
-  }, [getAuthToken]);
+  }, []);
 
   return <Outlet />;
 };
