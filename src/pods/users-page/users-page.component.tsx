@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { ServicesApp, User } from "../../core";
+import {
+  GlobalAppContext,
+  GlobalStateApp,
+  ServicesApp,
+  User,
+} from "../../core";
 import { UserCard } from "./components";
 import { routesApp } from "../../router";
 import "./users-page.styles.scss";
 
 export const UsersPage: React.FC = () => {
+  const { state } = useContext<GlobalStateApp>(GlobalAppContext);
+
+  console.log("STATE: ", state.currentAccount);
+
   const [usersData, setUsersData] = useState<User[]>([]);
 
   const [numList, setNumList] = useState<number>(5);

@@ -1,3 +1,5 @@
+import { jwtDecode } from "jwt-decode";
+import { CurrentAccount } from "../core";
 import { routesApp } from "../router";
 
 export const useAppFunctions = () => {
@@ -14,12 +16,43 @@ export const useAppFunctions = () => {
     return null;
   }
   //
-  const getAuthToken = (): string | null => {
+
+  //
+  // const getAuthToken = (): CurrentAccount | null => {
+  //   const cookies = document.cookie.split("; ");
+  //   const authCookie = cookies.find((cookie) =>
+  //     cookie.startsWith(import.meta.env.VITE_APP_COOKIE_AUTH)
+  //   );
+  //   const authCookieSplitted = authCookie ? authCookie.split("=")[1] : null;
+  //   const decoded: any = jwtDecode(authCookieSplitted || "");
+  //   return decoded || null;
+  // };
+
+  //*
+  const getAuthToken = (): CurrentAccount | null => {
     const cookies = document.cookie.split("; ");
     const authCookie = cookies.find((cookie) =>
       cookie.startsWith(import.meta.env.VITE_APP_COOKIE_AUTH)
     );
-    return authCookie ? authCookie.split("=")[1] : null;
+
+    if (!authCookie) return null;
+
+    const authCookieSplitted = authCookie.split("=")[1];
+
+    // Verifiying it is divided in 3 parts - header, payload and signature
+    if (authCookieSplitted && authCookieSplitted.split(".").length === 3) {
+      console.log("authCookieSplitted", authCookieSplitted);
+      try {
+        const decoded: any = jwtDecode(authCookieSplitted);
+        return decoded || null;
+      } catch (error) {
+        console.error("Error decoding JWT:", error);
+        return null;
+      }
+    } else {
+      console.error("Invalid JWT format.");
+      return null;
+    }
   };
 
   //

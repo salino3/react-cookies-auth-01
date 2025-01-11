@@ -7,6 +7,11 @@ export const ReducerApp = (state: StateApp, action: All_Actions) => {
         ...state,
         theme: action.payload,
       };
+    case "LOGIN_ACCOUNT":
+      return {
+        ...state,
+        currentAccount: action.payload,
+      };
 
     default:
       return state;
