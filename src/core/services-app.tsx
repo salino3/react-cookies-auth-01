@@ -54,6 +54,17 @@ export class ServicesApp {
     return await axios.get(`${baseBackend}/users`);
   }
 
+  public static async getBatchUsers(
+    limit: number = 5,
+    offset: number = 0
+  ): Promise<AxiosResponse<User[]>> {
+    return await axios.get(
+      `${baseBackend}/users/batch/get?limit=${String(limit)}&offset=${String(
+        offset
+      )}`
+    );
+  }
+
   public static async getCompanies(): Promise<AxiosResponse<Company[]>> {
     return await axios.get(`${baseBackend}/companies`);
   }
