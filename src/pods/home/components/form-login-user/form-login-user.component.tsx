@@ -1,21 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppFunctions } from "../../../../hooks";
-import {
-  GlobalAppContext,
-  GlobalStateApp,
-  ServicesApp,
-  UserLoginForm,
-} from "../../../../core";
+import { ServicesApp, UserLoginForm } from "../../../../core";
 import { BoxInput } from "../../../../common-app";
 import { routesApp } from "../../../../router";
 import "./form-login-user.styles.scss";
 
 export const FormLoginUser: React.FC = () => {
   const navigate = useNavigate();
-
-  const { getAuthToken } = useAppFunctions();
-  const { loginAccount } = useContext<GlobalStateApp>(GlobalAppContext);
 
   const [formData, setFormData] = useState<UserLoginForm>({
     email: "",
@@ -25,12 +16,7 @@ export const FormLoginUser: React.FC = () => {
   const hanldeSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
 
-    ServicesApp?.loginUser(formData).then((res: any) => {
-      // que hago con res?
-      const myAuthCookie = getAuthToken();
-      console.log("herecookie:", myAuthCookie);
-      loginAccount(myAuthCookie);
-
+    ServicesApp?.loginUser(formData).then(() => {
       navigate(routesApp?.users);
     });
   };

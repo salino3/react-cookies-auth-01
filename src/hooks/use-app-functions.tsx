@@ -44,6 +44,7 @@ export const useAppFunctions = () => {
       console.log("authCookieSplitted", authCookieSplitted);
       try {
         const decoded: any = jwtDecode(authCookieSplitted);
+
         return decoded || null;
       } catch (error) {
         console.error("Error decoding JWT:", error);
