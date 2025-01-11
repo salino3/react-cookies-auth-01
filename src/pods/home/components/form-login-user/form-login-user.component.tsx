@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BoxInput } from "../../../../common-app";
 import { ServicesApp, UserLoginForm } from "../../../../core";
+import { BoxInput } from "../../../../common-app";
 import { routesApp } from "../../../../router";
 import "./form-login-user.styles.scss";
 
 export const FormLoginUser: React.FC = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState<UserLoginForm>({
     email: "",
     password: "",
