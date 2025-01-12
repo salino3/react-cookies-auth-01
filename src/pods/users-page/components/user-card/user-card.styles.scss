@@ -1,10 +1,7 @@
-.smallNoPadding {
-  text-align: center;
-}
-
 .trCard {
   cursor: pointer;
-  th {
+  .th {
+    padding: 0 1rem;
     &::before {
       content: "•";
     }
@@ -12,4 +9,11 @@
   td {
     padding: 0.5rem;
   }
+}
+
+.you {
+  background-color: #e9e979 !important;
+}
+.you:hover {
+  background-color: #e3e359 !important;
 }
