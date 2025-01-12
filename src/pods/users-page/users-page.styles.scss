@@ -54,6 +54,11 @@
       }
     }
     tbody {
+      tr {
+        .smallNoPadding {
+          text-align: center;
+        }
+      }
       tr:nth-child(even) {
         background-color: var(--color-eight);
       }

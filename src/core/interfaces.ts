@@ -21,7 +21,7 @@ export interface WorkRelationships {
 }
 
 export interface CurrentAccount {
-  id: string;
+  id: number;
   email: string;
   iat: number;
   exp: number;
