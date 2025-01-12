@@ -2,5 +2,5 @@ import React from "react";
 import "./companies-page.styles.scss";
 
 export const CompaniesPage: React.FC = () => {
-  return <div>Companies Page</div>;
+  return <div className="rootCompaniesPage">Companies Page</div>;
 };
