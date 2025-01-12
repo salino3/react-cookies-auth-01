@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { GlobalAppContext, GlobalStateApp } from "../../core";
 import { useAppFunctions } from "../../hooks";
 import { routesApp } from "../../router";
 import "./header.styles.scss";
 
 export const Header: React.FC = () => {
   const location = useLocation();
+
+  const { state } = useContext<GlobalStateApp>(GlobalAppContext);
+  const { currentAccount } = state;
 
   const { closeSession } = useAppFunctions();
   return (
@@ -15,6 +19,9 @@ export const Header: React.FC = () => {
       ) : (
         <button onClick={closeSession}>Exit</button>
       )}
+      <span>
+        {currentAccount?.email && `Account: ${currentAccount?.email || ""}`}
+      </span>
       <nav>
         <ul>
           <li>
