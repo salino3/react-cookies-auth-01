@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AxiosResponse } from "axios";
-import { ServicesApp, User } from "../../core";
+import {
+  GlobalAppContext,
+  GlobalStateApp,
+  ServicesApp,
+  User,
+} from "../../core";
+import { useAppFunctions } from "../../hooks";
 import { BaseModal } from "../../common";
 import { DeleteFormUser, UpdateFormUser } from "./components";
 import { routesApp } from "../../router";
@@ -9,6 +15,10 @@ import "./view-user.styles.scss";
 
 export const ViewUser: React.FC = () => {
   const { id } = useParams();
+
+  const { state } = useContext<GlobalStateApp>(GlobalAppContext);
+  const { currentAccount } = state;
+  const { capitalizeFirst } = useAppFunctions();
 
   const [userData, setUserData] = useState<User>({
     name: "",
@@ -55,20 +65,22 @@ export const ViewUser: React.FC = () => {
             <p className="card-text">
               <span>Age:</span> <span>{userData?.age}</span>
             </p>
-            <div className="boxbtnsCard">
-              <button
-                className="btnUpdateCard"
-                onClick={() => setAction("update")}
-              >
-                Update
-              </button>
-              <button
-                className="btnDeleteCard"
-                onClick={() => setAction("delete")}
-              >
-                Delete
-              </button>
-            </div>
+            {currentAccount && String(currentAccount?.id) === id && (
+              <div className="boxbtnsCard">
+                <button
+                  className="btnUpdateCard"
+                  onClick={() => setAction("update")}
+                >
+                  Update
+                </button>
+                <button
+                  className="btnDeleteCard"
+                  onClick={() => setAction("delete")}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -76,7 +88,7 @@ export const ViewUser: React.FC = () => {
       {action && (
         <BaseModal
           minHeight={action === "delete" ? "40%" : "70%"}
-          title={action}
+          title={capitalizeFirst(action)}
           showModal={!!action}
           onClose={() => setAction("")}
         >
